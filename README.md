@@ -1,5 +1,11 @@
-This is a simple radar application to accompany the flipper zero that reads the raw input of the LD2450 Sensors and displays it in either its raw numeric form or in a radar.
+This is a simple Live LD2450 radar tracking app for Flipper Zero. Reads the raw input of the LD2450 Sensors and displays it in either its raw numeric form or in a radar.
 Nice to Test if your sensors are responding properly
+Features:
+- UART communication with LD2450
+- 3-target tracking
+- Text mode
+- Radar cone visualization
+- Real-time moving target display
 
 ![Screenshot](screenshots/screenshot1.jpg)
 
@@ -24,16 +30,12 @@ float x_normalized = x_ft / cone_half_width_ft;
 
 /* Exaggerate left/right dot movement without changing cone lines */
 x_normalized *= 1.0f;
-
-if(x_normalized < -1.0f) x_normalized = -1.0f;
-if(x_normalized > 1.0f) x_normalized = 1.0f;
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
 Tuning this value "x_normalized *= 1.5f;" where "1.0" is raw input, "1.5" is a moderate boost, "2.0" is a dramatic boost and "3.0" is Ludicrous mode.
 The x axis in the raw input screen may be confusing the way it works is; Y is the distance away from the sensor, while x is the distance from the center line of the sensor:
 
 Top-down view
-
             + Y
              ↑
              |
@@ -41,4 +43,18 @@ Top-down view
 ----------LD2450----------
              |
 
+
+## Installation
+
+**Using UFBT**
+
+1.  Clone this repository.
+2.  Connect your Flipper Zero via USB.
+3.  Run the following command in the project directory:
+
+```bash
+ufbt launch
+```
+
+This will compile the application and launch it immediately on your Flipper Zero.
 *   **Work in Progress** ; but still figured I share since it has gathered more interest than I had anitcipated.
