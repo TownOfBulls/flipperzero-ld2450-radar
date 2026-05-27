@@ -3,7 +3,7 @@ Nice to Test if your sensors are responding properly
 
 ![Screenshot](screenshots/screenshot1.jpg)
 
-![Screenshot](screenshots/screenshot2.mp4)
+![Screenshot](screenshots/screenshot2.gif)
 
 The Gpios in your flipper should be set to 5V.
 *   **On USB:** If connected via USB, the 5V rail is active automatically, so this step is not required.
@@ -19,6 +19,17 @@ Connection Diagram for the LD2450 module -> Flipper Zero GPIO header:
 
 
 In the code This section controls the "sensitivity" for the x axis, making the dot exaggarate left or right movements on the radar.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+float x_normalized = x_ft / cone_half_width_ft;
+
+/* Exaggerate left/right dot movement without changing cone lines */
+x_normalized *= 1.0f;
+
+if(x_normalized < -1.0f) x_normalized = -1.0f;
+if(x_normalized > 1.0f) x_normalized = 1.0f;
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+Tuning this value "x_normalized *= 1.5f;" where "1.0" is raw input, "1.5" is a moderate boost, "2.0" is a dramatic boost and "3.0" is Ludicrous mode.
 The x axis in the raw input screen may be confusing the way it works is; Y is the distance away from the sensor, while x is the distance from the center line of the sensor:
 
 Top-down view
