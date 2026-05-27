@@ -24,25 +24,27 @@ Connection Diagram for the LD2450 module -> Flipper Zero GPIO header:
 | **RX** | **TX** (Pin 13) | Flipper GPIO 13 (USART TX). |
 
 
-In the code This section controls the "sensitivity" for the x axis, making the dot exaggarate left or right movements on the radar.
------------------------------------------------------------------------------------------------------------------------------------------------
+## Coordinate System
+The x axis in the raw input screen may be confusing the way it works is; Y is the distance away from the sensor, while x is the distance from the center line of the sensor:
+```text
+            +Y
+             ↑
+             |
+   -X        |        +X
+-------------+-------------
+             |
+          LD2450
+```
+
+##In the code This section controls the "sensitivity" for the x axis, making the dot exaggarate left or right movements on the radar.
+```text
 float x_normalized = x_ft / cone_half_width_ft;
 
 /* Exaggerate left/right dot movement without changing cone lines */
 x_normalized *= 1.0f;
------------------------------------------------------------------------------------------------------------------------------------------------
+```
 
 Tuning this value "x_normalized *= 1.5f;" where "1.0" is raw input, "1.5" is a moderate boost, "2.0" is a dramatic boost and "3.0" is Ludicrous mode.
-The x axis in the raw input screen may be confusing the way it works is; Y is the distance away from the sensor, while x is the distance from the center line of the sensor:
-
-Top-down view
-            + Y
-             ↑
-             |
-   -X        |        +X
-----------LD2450----------
-             |
-
 
 ## Installation
 
