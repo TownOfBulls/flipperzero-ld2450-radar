@@ -16,7 +16,7 @@ The Gpios in your flipper should be set to 5V.
 
 Connection Diagram for the LD2450 module -> Flipper Zero GPIO header:
 
-| LD2410 Pin | Flipper Zero Pin | Note |
+| LD2450 Pin | Flipper Zero Pin | Note |
 | :--- | :--- | :--- |
 | **VCC** | **5V** (Pin 1) | but 5V is standard. |
 | **GND** | **GND** (Pin 8) | Any GND pin works. |
