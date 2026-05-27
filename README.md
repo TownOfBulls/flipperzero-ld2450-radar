@@ -57,6 +57,12 @@ Tuning this value "x_normalized *= 1.5f;" where "1.0" is raw input, "1.5" is a m
 ```bash
 ufbt launch
 ```
-
 This will compile the application and launch it immediately on your Flipper Zero.
-*   **Work in Progress** ; but still figured I share since it has gathered more interest than I had anitcipated.
+
+ Work in Progress; but still figured I share since it has gathered more interest than I had anitcipated.
+## Known Issues
+
+- Coordinate interpretation may still need calibration
+- X-axis orientation may vary depending on sensor mounting
+- Radar plotting is experimental
+- False targets may appear near walls or reflective surfaces
